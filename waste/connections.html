@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/amazonForm.css' %}">
+  </head>
+  <body style="background-color: #d8d8d8">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center mt-5">
+          <h1>Set up your seller account</h1>
+          <p class="lead">
+            Add an eBay or  Amazon account so that we can check your orders.
+            <br> You can add more accounts later.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 mt-5 ">
+          <img src="{% static 'img/amazon.png' %}" alt="" style="width: 70%; margin-left: 78px;">
+        </div>
+        <div class="col-6 mt-5 ">
+          <img src="{% static 'img/ebay.png' %}" alt="" style="width: 65%; height: 90%; margin-left: 103px;">
+        </div>
+      </div>
+      <div class="row text-center mt-4">
+        <div class="col">
+            {% if form.accounts %}
+              {% include "socialaccount/snippets/provider_list.html" with process="connect" %}
+            {% else %}
+              <button type="button" class="btn btn-lg btn-primary" id="amzFormButton">Add Amazon Seller Account</button>
+            {% endif %}
+        </div>
+        <div class="col">
+            <button type="button" id="amzFormButton" class="btn btn-lg btn-primary">Add Ebey Seller Account</button>
+        </div>
+      </div>
+    </div>
+    {% include './snippets/addAmazonSellerAccount.html' %}
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="{% static 'js/csrf.ajax.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/amazonForm.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>

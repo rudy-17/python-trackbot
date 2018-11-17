@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    {% include 'seller/base/css.html' %}
+  </head>
+  <body style="background-color: #d8d8d8">
+    {% include 'seller/snippets/top_navbar.html' %}
+    <main>
+    {% block main %}
+    {% endblock %}
+    {% include 'seller/base/js.html' %}
+  </body>
+</html>

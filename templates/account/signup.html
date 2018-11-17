@@ -1,0 +1,73 @@
+{% load i18n %}
+{% load static %}
+<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+
+<html lang="en" class="gr__app_trackerbot_me">
+<head>
+  <title>TrackerBot</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+  <link href="{% static 'css/login.css' %}" rel="stylesheet">
+</head>
+<body class="modal-open" data-gr-c-s-loaded="true" style="background-color: #333;">
+  <div id="container">
+  <div class="modal fade login in" id="loginModal" style="display: block;">
+    <div class="modal-dialog login animated">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="box">
+            <div class="content">
+
+              <div class="social">
+                <img src="{% static 'img/amazonfbalogo.jpg' %}" alt="TrackerBot" width="300">
+              </div>
+
+              <div class="division">
+                   <div class="line l"></div>
+                     <span id="labelSpan">Register</span>
+                   <div class="line r"></div>
+              </div>
+
+              <div class="error"></div>
+
+
+            </div>
+                   </div>
+                   <div class="box">
+                       <div class="content registerBox" style="">
+                        <div class="form">
+                          <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">{% csrf_token %}
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            {% if redirect_field_value %}
+                            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                            {% endif %}
+                            <button type="submit" class="btn btn-default btn-register">{% trans "Sign Up" %} &raquo;</button>
+                          </form>
+                         </div>
+                       </div>
+                   </div>
+               </div>
+
+               <div class="modal-footer">
+                   <div class="forgot login-footer" style="display: none;">
+                       <span>Looking to
+                            <a href="javascript: showRegisterForm();">create an account</a>
+                       ?</span>
+                       <br>
+                       <span><a href="/forgotPassword">Forgot your password?</a></span>
+                   </div>
+                   <div class="forgot register-footer" style="">
+                        <span>Already have an account?</span>
+                        <a href="javascript: showLoginForm();">Login</a>
+                        <br>
+                        <span><a href="/forgotPassword">Forgot your password?</a></span>
+                   </div>
+               </div>
+         </div>
+     </div>
+ </div>
+
+ </div><div class="modal-backdrop fade in"></div>
+</body>
+</html>

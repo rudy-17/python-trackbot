@@ -1,0 +1,94 @@
+.amz-content{
+  border-radius: 0;
+  padding: 0;
+}
+
+.amz-instructions{
+  background-color: #1A2068;
+  color: white;
+}
+
+.amz-instructions .modal-header,
+.amz-instructions .modal-footer,
+.amz-form .modal-header,
+.amz-form .modal-footer{
+  border: none;
+}
+
+.amz-login{
+  width: 700px;
+}
+
+.amz-instructions .modal-body ol{
+  padding-left: 16px;
+}
+
+.amz-instructions .modal-body ol li{
+  margin-bottom: 18px;
+}
+
+.amz-instructions .modal-body ol li a:link,
+.amz-instructions .modal-body ol li a:hover,
+.amz-instructions .modal-body ol li a:visited{
+  color: #F37A1E;
+  text-decoration: underline;
+}
+
+
+.amz-instructions .modal-body ol li span{
+  color: #F37A1E;
+  font-weight: bold;
+}
+
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  flex-wrap: wrap;
+}
+.row > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+
+.amz-form input,
+.amz-form input:focus
+{
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  border-bottom: 1px darkgrey solid;
+}
+
+.amz-form label{
+  text-transform: uppercase;
+}
+
+.multiselect-native-select .btn-group button{
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid darkgray;
+  border-radius: 0;
+  width: 100%;
+}
+.multiselect-native-select .btn-group ul{
+  width: 100%;
+  text-align: center;
+}
+
+.multiselect-native-select .btn-group{
+  width: 100%;
+}
+
+.amz-controls{
+  text-align: right;
+}
+
+.amz-controls button{
+  background: transparent;
+  margin-left: 10px;
+  border: 1px solid darkgray;
+}

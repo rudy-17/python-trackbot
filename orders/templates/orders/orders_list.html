@@ -1,0 +1,28 @@
+{% extends 'seller/base.html' %}
+
+{% block main %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-6 mx-auto mb-2 mt-4">
+        <form method="GET" action="" class="form my-2 my-lg-0 search-form">
+          <div class="input-group">
+            <input class="form-control" type="text" placeholder="Filter by Tracking-id / Product Name" aria-label="Search" name="q" value="{{ request.GET.q }}">
+            <span class="input-group-btn">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+    {% if request.GET.q %}
+    <div class="row">
+      <div class="col">
+        Results for <b>{{ request.GET.q }}</b>
+      </div>
+    </div>
+    {% endif %}
+    <hr />
+    {% include 'orders/snippets/orderListing.html' with object_list=object_list %}
+  </div>
+{% endblock %}

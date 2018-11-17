@@ -1,0 +1,36 @@
+{% extends './base.html' %}
+{% load static %}
+    {% block main %}
+      <div class="container">
+        <div class="row">
+          <div class="col text-center mt-5">
+            <h1>Set up your seller account</h1>
+            <p class="lead">
+              Add an eBay or  Amazon account so that we can track your orders.
+              <br> You can add more accounts later.
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6 mt-5 ">
+            <img src="{% static 'img/amazon.png' %}" alt="" style="width: 70%; margin-left: 78px;">
+          </div>
+          <div class="col-6 mt-5 ">
+            <img src="{% static 'img/ebay.png' %}" alt="" style="width: 65%; height: 90%; margin-left: 103px;">
+          </div>
+        </div>
+        <div class="row text-center mt-4">
+          <div class="col">
+            {% if create %}
+              <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#amzCredentials">Add Amazon Seller Account</button>
+            {% else %}
+              <button type="button" class="btn btn-lg btn-success">View you Account</button>
+            {% endif %}
+          </div>
+          <div class="col">
+              <button type="button" id="amzFormButton" class="btn btn-lg btn-primary">Add Ebey Seller Account</button>
+          </div>
+        </div>
+      </div>
+      {% include './snippets/AmazonCredentialsModal.html' with form=form%}
+    {% endblock %}

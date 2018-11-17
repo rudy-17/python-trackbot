@@ -1,0 +1,21 @@
+{% for obj in my_context %}
+  <div class="card mt-3">
+    <div class="card-header">
+      {{ obj.orderData }} | <b>ORDER: {{ obj.orderNumber }}</b>
+    </div>
+    <div class="card-body">
+      <h5>{{ obj.orderStatus }}</h5><br />
+      <b>Payment Method:</b> {{ obj.paymentMethod }}<br />
+      <b>Product Name:</b> {{ obj.productName }}<br />
+      <b>Shipping Address:</b> {{ obj.shippingAddress }}
+    </div>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#a{{ obj.orderNumber }}">
+      Track your package
+    </button>
+    {% include './trackPackageModal.html' with id=obj.orderNumber track=obj.track %}
+  </div>
+{% endfor %}
+{{ track }}
+{% if not object_list %}
+  No such orders found
+{% endif %}

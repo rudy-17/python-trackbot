@@ -1,0 +1,74 @@
+<div class="modal fade login" id="amazonForm">
+  <div class="modal-dialog amz-login animated">
+    <div class="modal-content amz-content">
+      <div class='row'>
+        <div class="col-sm-5 amz-instructions">
+          <div class="modal-header">
+            <h2>Instructions</h2>
+          </div>
+          <div class="modal-body">
+            <ol>
+              <li>Log in your Amazon Seller account and follow <a href="https://sellercentral.amazon.in/gp/mws/registration/register.html?signInPageDisplayed=1&devAuth=1">this link</a>.</li>
+              <li>Enter the following information:
+                <br>Developer's Name: <span>Beezytrack</span>
+                <br>Developer's ID: <span>6946-0611-6457</span>
+              </li>
+              <li>Amazon will provide you with a Seller ID and MWS Auth Token.
+                <br>Please enter them in the form.
+              </li>
+            </ol>
+            <br/>
+          </div>
+          <div class="modal-footerr">
+          </div>
+        </div>
+        <div class="col-sm-7 amz-form">
+          <div class="modal-header">
+            <h2>Add Credentials</h2>
+          </div>
+          <div class="modal-body">
+            <form id="amazonRealForm">
+              <div class="form-group">
+                <label for="" class="control-label">Credentials Name*</label>
+                <input type="text" name="amazonUsername" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="" class="control-label">Seller ID*</label>
+                <input type="text" name="amazonSellerId" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="" class="control-label">MWS AUTH TOKEN*</label>
+                <input type="text" name="amazonAuthToken" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="" class="control-label">Amazon Marketplace*</label>
+                <select multiple="multiple" name="amazonMarketplace" id="amz-marketplace">
+                  <option value="A2EUQ1WTGCTBG2">Canada</option>
+                  <option value="ATVPDKIKX0DER">US</option>
+                  <option value="A1AM78C64UM0Y8">Mexico</option>
+                  <option value="A1RKKUPIHCS9HS">Spain</option>
+                  <option value="A1F83G8C2ARO7P">UK</option>
+                  <option value="A13V1IB3VIYZZH">France</option>
+                  <option value="A1PA6795UKMFR9">Germany</option>
+                  <option value="APJ6JRA9NG5V4">Italy</option>
+                  <option value="A2Q3Y263D00KWC">Brazil</option>
+                  <option value="A21TJRUUN4KGV">India</option>
+                  <option value="AAHKV2X7AFYLW">China</option>
+                  <option value="A1VC38T7YXB528">Japan</option>
+                  <option value="A39IBJ37TRP1C6">Australia</option>
+                </select>
+              </div>
+              <div class="form-group amz-controls">
+                <button id="amz-cancel" type="reset">Cancel</button>
+                <button type="submit">Add</button>
+              </div>
+            </form>
+            <br/>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
