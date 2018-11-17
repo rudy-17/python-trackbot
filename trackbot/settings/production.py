@@ -25,7 +25,7 @@ SECRET_KEY = 'joko&l$xvb9*)s0le6x0fdjicmpt-9qw4beux%0+7qieqe+fa0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.herokuapp.com']
 
 # EMAIL_HOST = 'smtp.sendgrid.com'
 # EMAIL_HOST_USER = 'teamcfe'
