@@ -62,7 +62,6 @@ INSTALLED_APPS = [
 ]
 #http://127.0.0.1:8000/accounts/amazon/login/callback/
 
-PAYPAL_IDENTITY_TOKEN = "U1YGS9QIFS5gfMumc8LfoYGYZBkzTKWiHt77K3ifvLx5VD7FYIa5QB9-Eu4"
 SITE_ID = 1
 
 MIDDLEWARE = [
@@ -149,7 +148,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 

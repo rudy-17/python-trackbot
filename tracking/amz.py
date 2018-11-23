@@ -135,6 +135,9 @@ class AmzScraper(object):
                 data['payment-method'] = fn(element)
                 element = driver.find_elements_by_xpath('.//*[@class="a-fixed-left-grid-col a-col-right"]/div[1]/a[1]')
                 data['product-name'] = fn(element)
+                element = driver.find_elements_by_xpath('.//*[@class="yo-critical-feature"]')
+                if len(element) > 0:
+                    data['product-image'] = element[0].get_attribute('src')
 
                 import time
                 try:

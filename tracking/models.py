@@ -45,6 +45,7 @@ def seller_account_post_save_reciever(sender, instance, *args, **kwargs):
             shippingAddress = each['shipping-address'],
             paymentMethod = each['payment-method'],
             productName = each['product-name'],
+            productImage = each.get('product-image'),
             trackingID = each['trackingID'][12:]
         )
         order_instance.save()

@@ -26,6 +26,7 @@ class Orders(models.Model):
     shippingAddress = models.TextField(max_length=120)
     paymentMethod = models.TextField(max_length=120)
     productName = models.CharField(max_length=120)
+    productImage = models.TextField()
     objects = OrderManager()
 
     def __str__(self):

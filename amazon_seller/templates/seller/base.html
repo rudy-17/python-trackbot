@@ -7,10 +7,40 @@
     {% include 'seller/base/css.html' %}
   </head>
   <body style="background-color: #d8d8d8">
-    {% include 'seller/snippets/top_navbar.html' %}
-    <main>
-    {% block main %}
-    {% endblock %}
-    {% include 'seller/base/js.html' %}
+    <nav class="navbar navbar-light bg-light fixed-top">
+      <a class="navbar-brand" href="#"><strong>BEEZYTRACK</strong></a>
+      <div class="navbar-header">
+          <span class="navbar-brand">Seller Account: Amazon</span>
+          <a class="navbar-brand btn btn-light" href="https://parceltracking.pb.com/">Track your UPA</a>
+          <a class="navbar-brand btn btn-light" href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook</a>
+          <form class="navbar-brand btn btn-light" action="{% url 'account_logout' %}" method="post">{% csrf_token %}
+            <style media="screen">
+              .submitLink {
+                background-color: transparent;
+                text-decoration: none;
+                border: none;
+                color: black;
+                cursor: pointer;
+              }
+              submitLink:focus {
+                outline: none;
+              }
+            </style>
+              <input type="submit" class='submitLink' value='Logout'>
+          </form>
+          <i class="fa fa-bars fa-1x" id="menu-toggle" style="cursor: pointer"></i>
+      </div>
+
+    </nav>
+    <div id="wrapper" style="margin-top: 60px">
+      {% include 'seller/snippets/top_navbar.html' %}
+      <div id="page-content-wrapper">
+        {% block main %}
+        {% endblock %}
+      </div>
+      {% include 'seller/base/js.html' %}
+      {% block script %}
+      {% endblock %}
+    </div>
   </body>
 </html>

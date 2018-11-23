@@ -1,0 +1,32 @@
+{% extends './base.html' %}
+{% load static %}
+    {% block main %}
+    <div class="container">
+      <div class="row my-5  ">
+        <div class="col-4">
+          <div class="row">
+            <img alt="150x150" src="{% static 'img/profile.png' %}" class='col-10' height="250px">
+          </div>
+          <button type="button" class="btn btn-success col-10 mt-3">Upload</button>
+          <a href="{% url 'account_change_password' %}"><button type="button" class="btn btn-info col-10 mt-1">Change Password</button></a>
+        </div>
+        <div class="col-8" style="font-size: 16px">
+          {% for key,value in obj_list.items %}
+            <hr>
+            <div class="">
+              <form class="pencil row" action="#" method="post">{% csrf_token %}
+                <div class='col-2 text-right text-secondary'>{{ key }}</div>
+                <div class='col-9'>{{ value.label }}</div>
+                <div class='col-1'><button type="submit" class='btn btn-dark'><i class="fa fa-pencil" aria-hidden="true"></i></button></div>
+                <input type="hidden" name="key" value="{{ value.code }}">
+                <input type="hidden" name="current" value="{{ value.label }}">
+              </form>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+    {% block script %}
+      <script type="text/javascript" src="{% static 'js/update_profile.js' %}"></script>
+    {% endblock %}

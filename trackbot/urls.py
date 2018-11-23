@@ -23,8 +23,8 @@ from .views import home_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^accounts/', include('allauth.urls')),
     url(r'^$', home_page, name='home'),
+    url(r'^accounts/', include('allauth.urls')),
     url(r'^amazon/', include(("amazon_seller.urls", "amazon"), namespace='amazon')),
     url(r'^buyers/', include(("buyers.urls", "buyers"), namespace='buyers')),
     url(r'^paypal/', include('paypal.standard.ipn.urls')),

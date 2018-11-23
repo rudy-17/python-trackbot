@@ -3,6 +3,7 @@ from django.views.generic import ListView
 from collections import defaultdict
 from .models import Orders
 from tracking.models import TrackingDetails
+from payment.utils import checkSubscription
 
 def get_context_with_modal(qs):
     l = []
@@ -46,12 +47,14 @@ class OrdersListView(ListView):
 
     def render_to_response(self, context):
         if self.request.user.is_authenticated and self.request.user.is_superuser:
+
             return super(OrdersListView, self).render_to_response(context)
         return redirect('/accounts/login')
 
 class OrdersSearchView(ListView):
-    template_name = 'buyers/home_page.html'
+    template_name = 'buyers/dashboard.html'
     get_context_with_modal = get_context_with_modal
+    checkSubscription = checkSubscription
 
     def get_context_data(self, *args, **kwargs):
         context = super(OrdersSearchView, self).get_context_data(*args, **kwargs)
@@ -67,5 +70,10 @@ class OrdersSearchView(ListView):
 
     def render_to_response(self, context):
         if self.request.user.is_authenticated and not self.request.user.is_superuser:
-            return super(OrdersSearchView, self).render_to_response(context)
+            result = checkSubscription(self.request)
+            if result.get('status'):
+                self.request.session['subscribed'] = True
+                return super(OrdersSearchView, self).render_to_response(context)
+            else:
+                return redirect('/buyers/subscription')
         return redirect('/accounts/login')

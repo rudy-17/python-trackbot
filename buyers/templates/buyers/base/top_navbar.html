@@ -1,24 +1,36 @@
 {% url 'buyers:home' as home_url %}
 {% url 'buyers:contact' as contact_url %}
+{% url 'buyers:subscription' as subscription_url %}
 {% load static %}
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#"><img src="{% static 'img/amazonfbalogo.jpg' %}" alt="AfterShip logo" ></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item navbar-brand">
-        <a class="nav-link {% if request.path == home_url %}active{% endif %}" href="{% url 'buyers:home' %}">Home</a>
-      </li>
-      <li class="nav-item navbar-brand">
-        <a class="nav-link {% if request.path == contact_url %}active{% endif %}" href="{% url 'buyers:contact' %}">Contact us</a>
-      </li>
-      <li class="nav-item navbar-brand">
-        <a class="nav-link " href="{% url 'account_logout' %}">Logout</a>
-      </li>
-    </ul>
+    {% if request.user.is_authenticated %}
+      <ul class="navbar-nav ml-auto">
+        {% if request.session.subscribed %}
+          <li class="nav-item navbar-brand">
+            <a class="nav-link {% if request.path == home_url %}active{% endif %}" href="{% url 'buyers:home' %}">Track your order</a>
+          </li>
+        {% endif %}
+        <li class="nav-item navbar-brand">
+          <a class="nav-link {% if request.path == contact_url %}active{% endif %}" href="{% url 'buyers:contact' %}">Contact us</a>
+        </li>
+        <li class="nav-item navbar-brand">
+          <a class="nav-link {% if request.path == subscription_url %}active{% endif %}" href="{% url 'buyers:subscription' %}">My Subscription</a>
+        </li>
+        <li class="nav-item navbar-brand">
+          <a class="nav-link " href="{% url 'account_logout' %}">Logout</a>
+        </li>
+      </ul>
+    {% else %}
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item navbar-brand">
+          <a href="/accounts/login"><button type="button" class="btn btn-outline-warning">Login</button></a>
+          <a href="{% url 'account_signup' %}"><button type="button" class="btn btn-outline-warning">Signup</button></a>
+        </li>
+      </ul>
+    {% endif %}
   </div>
 </nav>

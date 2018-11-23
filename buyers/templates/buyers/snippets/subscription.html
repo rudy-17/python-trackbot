@@ -1,0 +1,31 @@
+<div class="container mt-4">
+  {% if not request.session.subscribed %}
+    <h2 class="text-center">Subscribe to track your orders</h2>
+  {% endif %}
+  <div class="card-deck mt-3">
+    <div class="card text-center">
+      <div class="card-body">
+        <h1 class="card-title">Starter</h1>
+        <h2 class="card-title">$9.99/mo</h2>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        {% include './subscription-decision.html' with form=form1 %}
+      </div>
+    </div>
+    <div class="card text-center">
+      <div class="card-body">
+        <h1 class="card-title">Professional</h1>
+        <h2 class="card-title">$14.99/mo</h2>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        {% include './subscription-decision.html' with form=form2 %}
+      </div>
+    </div>
+    <div class="card text-center">
+      <div class="card-body">
+        <h1 class="card-title">Business</h1>
+        <h2 class="card-title">$19.99/mo</h2>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        {% include './subscription-decision.html' with form=form3 %}
+      </div>
+    </div>
+  </div>
+</div>
