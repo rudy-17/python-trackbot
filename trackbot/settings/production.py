@@ -35,7 +35,7 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Python python-trackbot <farhankasmani956@gmail.com>'
 
 MANAGERS = (
-    ("farhankasmani956@gmail.com", "Farhan Kasmani"),
+    ("Farhan Kasmani", "farhankasmani956@gmail.com"),
 )
 ADMINS = MANAGERS
 
