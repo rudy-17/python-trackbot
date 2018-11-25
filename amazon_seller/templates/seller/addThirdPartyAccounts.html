@@ -24,11 +24,29 @@
             {% if create %}
               <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#amzCredentials">Add Amazon Seller Account</button>
             {% else %}
-              <button type="button" class="btn btn-lg btn-success">View you Account</button>
+              <div class="btn-group dropright">
+                <button type="button" class="btn btn-lg btn-success">
+                  {{ email }}
+                </button>
+                <button type="button" class="btn btn-lg btn-success" data-target="#alert" data-toggle="modal">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="modal fade" id="alert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete ?</h5>
+                      <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+                      <a href="{% url 'amazon:remove' %}" class="btn btn-danger">Yes</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             {% endif %}
           </div>
           <div class="col">
-              <button type="button" id="amzFormButton" class="btn btn-lg btn-primary">Add Ebey Seller Account</button>
+              <button type="button" id="amzFormButton" class="btn btn-lg btn-primary" disabled>Add Ebey Seller Account</button>
           </div>
         </div>
       </div>

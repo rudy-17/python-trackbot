@@ -10,10 +10,10 @@
     <nav class="navbar navbar-light bg-light fixed-top">
       <a class="navbar-brand" href="#"><strong>BEEZYTRACK</strong></a>
       <div class="navbar-header">
-          <span class="navbar-brand">Seller Account: Amazon</span>
-          <a class="navbar-brand btn btn-light" href="https://parceltracking.pb.com/">Track your UPA</a>
-          <a class="navbar-brand btn btn-light" href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook</a>
-          <form class="navbar-brand btn btn-light" action="{% url 'account_logout' %}" method="post">{% csrf_token %}
+          <span class="">Amazon</span>
+          <a class="btn btn-light" href="https://parceltracking.pb.com/">Track your UPA</a>
+          <a class="btn btn-light" href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook</a>
+          <form class="btn" action="{% url 'account_logout' %}" method="post">{% csrf_token %}
             <style media="screen">
               .submitLink {
                 background-color: transparent;
@@ -26,13 +26,13 @@
                 outline: none;
               }
             </style>
-              <input type="submit" class='submitLink' value='Logout'>
+            <input type="submit" class='submitLink' value='Logout'>
           </form>
           <i class="fa fa-bars fa-1x" id="menu-toggle" style="cursor: pointer"></i>
       </div>
 
     </nav>
-    <div id="wrapper" style="margin-top: 60px">
+    <div id="wrapper" style="margin-top: 54px">
       {% include 'seller/snippets/top_navbar.html' %}
       <div id="page-content-wrapper">
         {% block main %}

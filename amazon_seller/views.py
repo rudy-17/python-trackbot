@@ -9,6 +9,14 @@ from django.contrib.auth import get_user_model
 def addAmazonAccount(request):
     return HttpResponse("Done")
 
+def remove(request):
+    if request.user.is_authenticated and request.user.is_superuser:
+        account = SellerAccount.objects.filter(user=request.user)
+        if account:
+            account.delete()
+            return redirect('/amazon/setup')
+    return redirect('/amazon/setup')
+
 def profile(request):
     if request.user.is_authenticated and request.user.is_superuser:
         context = {}
@@ -33,11 +41,13 @@ def updateuser(request):
 
 def setupSellerAccount(request):
     if request.user.is_authenticated and request.user.is_superuser:
+        context = {}
         form = AmazonLoginForm(request.POST or None)
         account = SellerAccount.objects.filter(user=request.user)
         create = True
         if account:
             create = False
+            context['email'] = account[0].email
         if request.POST:
             if form.is_valid():
                 print(form.cleaned_data)
@@ -49,7 +59,9 @@ def setupSellerAccount(request):
                     password = password
                 )
                 return redirect('/amazon/setup')
-        return render(request, 'seller/addThirdPartyAccounts.html', {'form': form, 'create': create})
+        context['form'] = form
+        context['create'] = create
+        return render(request, 'seller/addThirdPartyAccounts.html', context)
     else:
         return redirect('/accounts/login')
 
