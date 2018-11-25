@@ -32,6 +32,7 @@ class AmzChromeDriver(object):
         self.driver = webdriver.Chrome('/app/.chromedriver/bin/chromedriver', chrome_options=chrome_options, service_args=['--verbose', '--log-path=/tmp/chromedriver.log'])
         self.driver.implicitly_wait(30)
         #'/usr/local/bin/chromedriver'
+        #/app/.chromedriver/bin/chromedriver
 
     def login(self, email, password):
         driver = self.driver
