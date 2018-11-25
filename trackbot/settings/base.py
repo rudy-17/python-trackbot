@@ -28,14 +28,14 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'farhankasmani956@gmail.com'
+EMAIL_HOST_USER = 'farhandeveloper20@gmail.com'
 EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'Python python-trackbot <farhankasmani956@gmail.com>'
+DEFAULT_FROM_EMAIL = 'Python python-trackbot <farhandeveloper20@gmail.com>'
 
 MANAGERS = (
-    ("Farhan Kasmani", "farhankasmani956@gmail.com"),
+    ("Farhan Kasmani", "farhandeveloper20@gmail.com"),
 )
 ADMINS = MANAGERS
 
