@@ -25,7 +25,7 @@ class AmzChromeDriver(object):
         chrome_options = webdriver.ChromeOptions()
         # chrome_options.add_argument('--headless')
         # chrome_options.add_argument('--no-sandbox')
-        chrome_options.binary_location = '/app/.apt/usr/bin/google-chrome-stable'
+        chrome_options.binary_location = '/app/.apt/usr/bin/google-chrome'
         # from pyvirtualdisplay import Display
         # display = Display(visible=0, size=(1024, 768))
         # display.start()
