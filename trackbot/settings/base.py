@@ -27,14 +27,17 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# EMAIL_HOST = 'smtp.sendgrid.com'
-# EMAIL_HOST_USER = 'teamcfe'
-# EMAIL_MAIN = 'hello@teamcfe.com'
-# EMAIL_HOST_PASSWORD = 'codeon2016'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'farhankasmani956@gmail.com'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Python python-trackbot <farhankasmani956@gmail.com>'
 
-
+MANAGERS = (
+    ("farhankasmani956@gmail.com", "Farhan Kasmani"),
+)
+ADMINS = MANAGERS
 
 # Application definition
 
