@@ -25,7 +25,7 @@ SECRET_KEY = 'joko&l$xvb9*)s0le6x0fdjicmpt-9qw4beux%0+7qieqe+fa0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['1bd3aa90.ngrok.io']
+ALLOWED_HOSTS = ['.1bd3aa90.ngrok.io']
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'farhandeveloper30@gmail.com'
