@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.1bd3aa90.ngrok.io']
+ALLOWED_HOSTS = ['*']
 #'.herokuapp.com',
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'farhandeveloper30@gmail.com'
