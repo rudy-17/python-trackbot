@@ -3,10 +3,13 @@
 {% url 'buyers:subscription' as subscription_url %}
 {% load static %}
 
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#"><img src="{% static 'img/amazonfbalogo.jpg' %}" alt="AfterShip logo" ></a>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
     {% if request.user.is_authenticated %}
       <ul class="navbar-nav ml-auto">
         {% if request.session.subscribed %}
@@ -27,10 +30,12 @@
     {% else %}
       <ul class="navbar-nav ml-auto">
         <li class="nav-item navbar-brand">
-          <a href="/accounts/login"><button type="button" class="btn btn-outline-warning">Login</button></a>
-          <a href="{% url 'account_signup' %}"><button type="button" class="btn btn-outline-warning">Signup</button></a>
+            <a class='nav-link text-warning' href="/accounts/login" class='nav-link'>Login</a>
+        </li>
+        <li class="nav-item navbar-brand">
+            <a class='nav-link text-warning' href="{% url 'account_signup' %}">Signup</a>
         </li>
       </ul>
+    </div>
     {% endif %}
-  </div>
 </nav>

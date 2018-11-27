@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['761b3100.ngrok.io']
 #'.herokuapp.com',
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'farhandeveloper30@gmail.com'

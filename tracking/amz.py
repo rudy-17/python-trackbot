@@ -25,11 +25,11 @@ class AmzChromeDriver(object):
         chrome_options = webdriver.ChromeOptions()
         # chrome_options.add_argument('--headless')
         # chrome_options.add_argument('--no-sandbox')
-        chrome_options.binary_location = '/app/.apt/usr/bin/google-chrome'
+        #chrome_options.binary_location = '/app/.apt/usr/bin/google-chrome'
         # from pyvirtualdisplay import Display
         # display = Display(visible=0, size=(1024, 768))
         # display.start()
-        self.driver = webdriver.Chrome('/app/.chromedriver/bin/chromedriver', chrome_options=chrome_options, service_args=['--verbose', '--log-path=/tmp/chromedriver.log'])
+        self.driver = webdriver.Chrome('/usr/local/bin/chromedriver', chrome_options=chrome_options, service_args=['--verbose', '--log-path=/tmp/chromedriver.log'])
         self.driver.implicitly_wait(30)
         #'/usr/local/bin/chromedriver'
         #/app/.chromedriver/bin/chromedriver
