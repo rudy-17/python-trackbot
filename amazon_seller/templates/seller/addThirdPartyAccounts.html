@@ -2,13 +2,20 @@
 {% load static %}
     {% block main %}
       <div class="container">
+        {% if notify %}
+          <div class="row">
+            <div class="alert alert-success" role="alert">
+              Successfullty activated ebay international tracking
+            </div>
+          </div>
+        {% endif %}
         <div class="row">
           <div class="col text-center mt-5">
             <h1>Set up your seller account</h1>
-            <p class="lead">
-              Add an eBay or  Amazon account so that we can track your orders.
-              <br> You can add more accounts later.
-            </p>
+            <h6>
+              Link your Amazon Seller account so that you can start tracking your shipments.
+              <br>To track your eBay International Shipments, tick the box below.
+            </h6>
           </div>
         </div>
         <div class="row">
@@ -22,7 +29,7 @@
         <div class="row text-center mt-4">
           <div class="col">
             {% if create %}
-              <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#amzCredentials">Add Amazon Seller Account</button>
+              <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#amzCredentials">Link Amazon Seller Account</button>
             {% else %}
               <div class="btn-group dropright">
                 <button type="button" class="btn btn-lg btn-success">
@@ -46,7 +53,13 @@
             {% endif %}
           </div>
           <div class="col">
-              <button type="button" id="amzFormButton" class="btn btn-lg btn-primary" disabled>Add Ebey Seller Account</button>
+            {% if not ebayActive %}
+              <form class="" action="{% url 'amazon:ebay' %}" method="post">{% csrf_token %}
+                <button type="submit" id="amzFormButton" class="btn btn-lg btn-primary">Activate your eBay International Tracking</button>
+              </form>
+            {% else %}
+              <button type="button" id="amzFormButton" class="btn btn-lg btn-primary disabled">Activate your eBay International Tracking</button>
+            {% endif %}
           </div>
         </div>
       </div>

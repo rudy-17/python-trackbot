@@ -1,0 +1,50 @@
+{% extends './base.html' %}
+{% load static %}
+{% block main %}
+  <div class="container">
+    <div class="card rounded">
+      <div class="card-body">
+        <form action="{% url 'amazon:help' %}" method="POST">
+          <div class="row">
+            <h6 class="text-muted col-6">If you have any tracking numbers that were not uploaded and would like us to check them, Please fill in this form</h6>
+          </div>
+          <div class="row">
+            <div class="col-9">
+              <input type="text" class="form-control" name="tba_no" placeholder="Enter tracking number">
+            </div>
+            <div class="col-3">
+              <input type="submit" class="form-control btn btn-success" value="Send">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+   
+  <div class="container">
+    <div class="card rounded">
+      <div class="card-body">
+        <form action="{% url 'amazon:help' %}" method="POST">
+          {% csrf_token %}
+          <div class="row">
+            <h6 class="text-muted col-6">We are always ready to help you</h6>
+          </div>
+          <div class="row">
+            <div class="col-9">
+              <label>Email:</label>
+              <input type="text" class="form-control" name="tba_no" placeholder="Enter your email">
+              <label>Subject:</label>
+              <input type="textarea" cols="40" rows="6" class="form-control" name="tba_no" placeholder="Enter your concern">
+            </div>
+          </br>
+            <br>
+             <input type="submit" class="form-control btn btn-success" style="width:10fr;" value="Send"></span>
+            </div>
+          </div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+{% endblock %}

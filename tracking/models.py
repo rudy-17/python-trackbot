@@ -43,7 +43,6 @@ def seller_account_post_save_reciever(sender, instance, *args, **kwargs):
             orderNumber = each['order-number'],
             orderStatus = each['order-status'],
             shippingAddress = each['shipping-address'],
-            paymentMethod = each['payment-method'],
             productName = each['product-name'],
             productImage = each.get('product-image'),
             trackingID = each['trackingID'][12:]

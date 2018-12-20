@@ -1,0 +1,18 @@
+{% for planName, values in form.items %}
+  {% include './subscriptionCards.html' with form=values title="Business" content="This is a longer card" %}
+{% endfor %}
+
+
+<div class="card-body">
+  <h1 class="card-title">{{ title }}</h1>
+  <p class="card-text">{{ content }}</p>
+  {% for each in form %}
+  <h2 class="card-title">{{ each.amount.value }}</h2>
+  {% include './subscription-decision.html' with form=each %}
+  {% endfor %}
+</div>
+
+
+{% include './subscriptionCards.html' with form=form1 title="Starter" amount="$9.99/mo" content="This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer." %}
+{% include './subscriptionCards.html' with form=form2 title="Professional" amount="$14.99/mo" content="This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer." %}
+{% include './subscriptionCards.html' with form=form3 title="Business" amount="$19.99/mo" content="This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer." %}

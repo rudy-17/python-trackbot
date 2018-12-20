@@ -2,6 +2,8 @@
 {% url 'amazon:setup' as setup_url %}
 {% url 'amazon:orders' as orders_url %}
 {% url 'amazon:profile' as profile_url %}
+{% url 'amazon:subscription' as subscription_url %}
+{% url 'amazon:help' as help_url %}
 
 <aside>
   <div id="sidebar-wrapper">
@@ -10,13 +12,25 @@
            <a href="{% url 'amazon:home' %}">Home</a>
         </li>
         <li class="{% if request.path == setup_url %}active{% endif %}">
-           <a href="{% url 'amazon:setup' %}">Amazon / Ebay</a>
+           <a href="{% url 'amazon:setup' %}">Link Account</a>
         </li>
-        <li class="{% if request.path == orders_url %}active{% endif %}">
-           <a href="{% url 'amazon:orders' %}">View Orders</a>
-        </li>
+        {% if request.session.subscribed %}
+          <li class="{% if request.path == orders_url %}active{% endif %}">
+             <a href="{% url 'amazon:orders' %}">View Orders</a>
+          </li>
+        {% endif %}
         <li class="{% if request.path == profile_url %}active{% endif %}">
            <a href="{% url 'amazon:profile' %}">Profile</a>
+        </li>
+        <li class="{% if request.path == subscription_url %}active{% endif %}">
+          {% if request.session.subscribed %}
+            <a href="{% url 'amazon:subscription' %}">View Plan / Cancel Plan</a>
+          {% else %}
+            <a href="{% url 'amazon:subscription' %}">Subscribe</a>
+          {% endif %}
+        </li>
+        <li class="{% if request.path == help_url %}active{% endif %}">
+           <a href="{% url 'amazon:help' %}">Help</a>
         </li>
      </ul>
   </div>

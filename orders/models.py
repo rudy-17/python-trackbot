@@ -7,9 +7,13 @@ from amazon_seller.models import SellerAccount
 
 class OrderManager(models.Manager):
     def search(self, query, user):
-        user_seller = user.selleraccount_set.all()[0]
-        lookups = Q(productName__icontains=query, user_seller=user_seller) | Q(trackingID__icontains=query, user_seller=user_seller)
-        return self.get_queryset().filter(lookups).distinct()
+        user_seller = user.selleraccount_set.all()
+        if user_seller:
+            user_seller = user_seller[0]
+            lookups = Q(productName__icontains=query, user_seller=user_seller) | Q(trackingID__icontains=query, user_seller=user_seller)
+            return self.get_queryset().filter(lookups).distinct()
+        else:
+            return None
 
     def searchExact(self, query):
         lookups = Q(trackingID__iexact=query)
@@ -24,7 +28,6 @@ class Orders(models.Model):
     trackingID = models.CharField(max_length=150)
     orderStatus = models.CharField(max_length=120)
     shippingAddress = models.TextField(max_length=120)
-    paymentMethod = models.TextField(max_length=120)
     productName = models.CharField(max_length=120)
     productImage = models.TextField()
     objects = OrderManager()

@@ -24,15 +24,17 @@ def get_context_with_modal(qs):
 class OrdersListView(ListView):
     template_name = 'orders/orders_list.html'
     get_context_with_modal = get_context_with_modal
+    checkSubscription = checkSubscription
 
     def get_context_data(self, *args, **kwargs):
         context = super(OrdersListView, self).get_context_data(*args, **kwargs)
         context['my_context'] = get_context_with_modal(context['object_list'])
+        print(context)
         return context
 
     def get_queryset(self, *args, **kwargs):
         request = self.request
-        if request.user.is_authenticated and request.user.is_superuser:
+        if request.user.is_authenticated:
             user_seller = request.user.selleraccount_set.all()
             if len(user_seller) > 0:
                 user_seller = user_seller[0]
@@ -46,15 +48,16 @@ class OrdersListView(ListView):
         return Orders.objects.filter(user_seller=user_seller)
 
     def render_to_response(self, context):
-        if self.request.user.is_authenticated and self.request.user.is_superuser:
-
-            return super(OrdersListView, self).render_to_response(context)
+        if self.request.user.is_authenticated:
+            if self.request.session.get('subscribed') == True:
+                return super(OrdersListView, self).render_to_response(context)
+            else:
+                return redirect('/amazon/subscription')
         return redirect('/accounts/login')
 
 class OrdersSearchView(ListView):
     template_name = 'buyers/dashboard.html'
     get_context_with_modal = get_context_with_modal
-    checkSubscription = checkSubscription
 
     def get_context_data(self, *args, **kwargs):
         context = super(OrdersSearchView, self).get_context_data(*args, **kwargs)
@@ -65,15 +68,9 @@ class OrdersSearchView(ListView):
         request = self.request
         query   = request.GET.get('q', None)
         if query is not None:
-            return Orders.objects.searchExact(query)
+            qs = Orders.objects.searchExact(query)
+            if len(qs) > 0:
+                qs1 = qs[0].user_seller.user.transactions_set.filter(active=True)
+                if len(qs1) > 0:
+                    return qs
         return None
-
-    def render_to_response(self, context):
-        if self.request.user.is_authenticated and not self.request.user.is_superuser:
-            result = checkSubscription(self.request)
-            if result.get('status'):
-                self.request.session['subscribed'] = True
-                return super(OrdersSearchView, self).render_to_response(context)
-            else:
-                return redirect('/buyers/subscription')
-        return redirect('/accounts/login')

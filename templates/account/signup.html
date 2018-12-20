@@ -19,12 +19,12 @@
             <div class="content">
 
               <div class="social">
-                <img src="{% static 'img/amazonfbalogo.jpg' %}" alt="TrackerBot" width="300">
+                <img src="{% static 'img/amazonfbalogo.png' %}" alt="TrackerBot" width="300">
               </div>
 
               <div class="division">
                    <div class="line l"></div>
-                     <span id="labelSpan">Register</span>
+                     <span id="labelSpan">Sign up</span>
                    <div class="line r"></div>
               </div>
 
@@ -59,7 +59,7 @@
                    </div>
                    <div class="forgot register-footer" style="">
                         <span>Already have an account?</span>
-                        <a href="javascript: showLoginForm();">Login</a>
+                        <a href="{% url 'account_login' %}">Login</a>
                         <br>
                         <span><a href="/forgotPassword">Forgot your password?</a></span>
                    </div>

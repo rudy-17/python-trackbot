@@ -8,11 +8,15 @@ def checkSubscription(request):
         transaction = qs[0]
         z = timezone.now() - transaction.dateTime
         # 1day = 86400seconds
-        if z.days > 30:
+        duration = transaction.duration
+        if z.days > duration:
             transaction.active = False
             transaction.save()
+            request.session['subscribed'] = False
             return {'status': False}
         else:
-            return {'status': True, 'days-left': 30 - z.days, 'transaction': transaction}
+            request.session['subscribed'] = True
+            return {'status': True, 'days-left': duration - z.days, 'transaction': transaction, 'duration': duration}
     else:
+        request.session['subscribed'] = False
         return {'status': False}

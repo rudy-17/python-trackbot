@@ -6,9 +6,5 @@ def home_page(request):
     user = request.user
     print("hello")
     if user.is_authenticated:
-        if user.is_superuser:
-            return redirect('/amazon/home')
-        else:
-            return redirect('/buyers/home')
-    else:
-        return render(request, 'buyers/homepage.html', {})
+        return redirect('/amazon/home')
+    return redirect('/buyers/home')

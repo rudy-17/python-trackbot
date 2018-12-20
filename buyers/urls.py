@@ -1,9 +1,11 @@
 from django.conf.urls import url
-from .views import contact_page, subscription_page
 from orders.views import OrdersSearchView
+from .views import learn_more, contact_page, search_tool_page
 
 urlpatterns = [
-    url(r'^contact/$', contact_page, name='contact'),
+    #url(r'^contact/$', contact_page, name='contact'),
     url(r'^home/$', OrdersSearchView.as_view(), name='home'),
-    url(r'^subscription/$', subscription_page, name='subscription'),
+    url(r'^learnmore/$', learn_more, name='learn_more'),
+    url(r'^contact/$', contact_page, name='contact'),
+    url(r'^searchTool/$', search_tool_page, name='search_tool'),
 ]

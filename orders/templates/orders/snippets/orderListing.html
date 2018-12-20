@@ -5,7 +5,7 @@
     </div>
     <div class="card-body">
       <div class="row">
-        <h6 class="col">{{ obj.orderStatus }}</h6>
+        <h6 class="col"><strong>{{ obj.orderStatus }}</strong></h6>
         <h6 class="col text-right">Order No: {{ obj.orderNumber }}</h6>
       </div>
       <div class="row">
@@ -14,16 +14,19 @@
         </div>
         <div class="col">
           <b>Product Name:</b><br />
-          {{ obj.productName }}<br />
-          <b>Payment Method:</b><br />
-          {{ obj.paymentMethod }}<br />
+          <div class="col">
+            {{ obj.productName }}<br />
+          </div>
         </div><br />
-      </div>
-      <div class="my-2">
-        <b>Shipping Address:</b> {{ obj.shippingAddress }}<br />
+        <div class="col">
+          <b>Shipping Address:</b><br />
+          <div class="col">
+            {{ obj.shippingAddress }}
+          </div>
+        </div>
       </div>
     </div>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#a{{ obj.orderNumber }}">
+    <button type="button" class="btn btn-dark col-3 ml-auto mb-2 mr-2" data-toggle="modal" data-target="#a{{ obj.orderNumber }}">
       Track your package
     </button>
     {% include './trackPackageModal.html' with id=obj.orderNumber track=obj.track %}

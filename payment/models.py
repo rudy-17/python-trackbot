@@ -5,7 +5,8 @@ from django.contrib.auth import get_user_model
 class Transactions(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     transactionID = models.CharField(max_length=150)
-    transactionType = models.CharField(max_length=150)
+    plan = models.CharField(max_length=150)
+    duration = models.IntegerField()
     amount = models.CharField(max_length=150)
     active = models.BooleanField()
     dateTime = models.DateTimeField(auto_now_add=True)

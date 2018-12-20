@@ -2,13 +2,9 @@
 {% load static %}
 {% block main %}
 	<div class="container">
-			<div class="row text-center">
-				<div class="col-3">
-					<img class="amazon" src="{% static 'img/amazon.png' %}" alt="Amazon FBA USA logo" />
-				</div>
-				<div class="col">
-					<img class="ebay" src="{% static 'img/ebay.png' %}" alt="Amazon FBA USA logo" />
-				</div>
+			<div class="row text-center justify-content-center mt-5">
+				<img class="col-3 mt-3" src="{% static 'img/amazon.png' %}" alt="Amazon FBA USA logo" height="15%"/>
+				<img class="col-3" src="{% static 'img/ebay.png' %}" alt="Amazon FBA USA logo" height="15%"/>
 			</div>
 			<div class="row text-center mt-3">
 				<div class="col">
@@ -19,9 +15,9 @@
 	      <div class="col-6 mx-auto mb-2 mt-4">
 	        <form method="GET" action="" class="form my-2 my-lg-0 search-form">
 	          <div class="input-group">
-	            <input class="form-control" type="text" placeholder="Track Your TBA-UBP Number" aria-label="Search" name="q" value="{{ request.GET.q }}">
+	            <input class="form-control" type="text" placeholder="Track Your TBA/UPA Number" aria-label="Search" name="q" value="{{ request.GET.q }}">
 	            <span class="input-group-btn">
-								<button class="btn btn-success" type="submit">Search</button>
+								<button class="btn btn-success" type="submit">Track</button>
 	            </span>
 	          </div>
 	        </form>

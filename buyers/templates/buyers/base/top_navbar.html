@@ -1,41 +1,34 @@
 {% url 'buyers:home' as home_url %}
+{% url 'buyers:learn_more' as learn_url %}
+{% url 'buyers:search_tool' as search_url %}
 {% url 'buyers:contact' as contact_url %}
-{% url 'buyers:subscription' as subscription_url %}
 {% load static %}
 
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#"><img src="{% static 'img/amazonfbalogo.jpg' %}" alt="AfterShip logo" ></a>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color:#282828">
+  <a class="navbar-brand" href="#"><img src="{% static 'img/check2.png' %}" alt="AfterShip logo" height="50px" style="background-color:"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
-    {% if request.user.is_authenticated %}
       <ul class="navbar-nav ml-auto">
-        {% if request.session.subscribed %}
-          <li class="nav-item navbar-brand">
-            <a class="nav-link {% if request.path == home_url %}active{% endif %}" href="{% url 'buyers:home' %}">Track your order</a>
-          </li>
-        {% endif %}
-        <li class="nav-item navbar-brand">
-          <a class="nav-link {% if request.path == contact_url %}active{% endif %}" href="{% url 'buyers:contact' %}">Contact us</a>
+        <li class="nav-item navbar-brand {% if request.path == home_url %}active{% endif %}">
+            <a class='nav-link font-weight-bold' style="color: #FF9900" href="{% url 'buyers:home' %}">Home</a>
         </li>
-        <li class="nav-item navbar-brand">
-          <a class="nav-link {% if request.path == subscription_url %}active{% endif %}" href="{% url 'buyers:subscription' %}">My Subscription</a>
+        <li class="nav-item navbar-brand {% if request.path == account_login %}active{% endif %}">
+            <a class='nav-link font-weight-bold' style="color: #FF9900" href="{% url 'account_login' %}">Beezytrack Login</a>
         </li>
-        <li class="nav-item navbar-brand">
-          <a class="nav-link " href="{% url 'account_logout' %}">Logout</a>
+        <li class="nav-item navbar-brand {% if request.path == learn_url %}active{% endif %}">
+            <a class='nav-link font-weight-bold' style="color: #FF9900"  href="{% url 'buyers:learn_more' %}">Learn More</a>
+        </li>
+        <li class="nav-item navbar-brand {% if request.path == search_url %}active{% endif %}">
+            <a class='nav-link font-weight-bold' style="color: #FF9900" href="{% url 'buyers:search_tool' %}">Search Tool</a>
+        </li>
+        <li class="nav-item navbar-brand {% if request.path == account_signup %}active{% endif %}">
+            <a class='nav-link font-weight-bold' style="color: #FF9900" href="{% url 'account_signup' %}">Signup</a>
+        </li>
+        <li class="nav-item navbar-brand {% if request.path == contact_url %}active{% endif %}">
+            <a class='nav-link font-weight-bold' style="color: #FF9900" href="{% url 'buyers:contact' %}">Contact Us</a>
         </li>
       </ul>
-    {% else %}
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item navbar-brand">
-            <a class='nav-link text-warning' href="/accounts/login" class='nav-link'>Login</a>
-        </li>
-        <li class="nav-item navbar-brand">
-            <a class='nav-link text-warning' href="{% url 'account_signup' %}">Signup</a>
-        </li>
-      </ul>
-    </div>
-    {% endif %}
+  </div>
 </nav>

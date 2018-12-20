@@ -10,3 +10,10 @@ class SellerAccount(models.Model):
 
     def __str__(self):
         return self.email
+
+class EbayAccount(models.Model):
+    user    = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    activate = models.BooleanField()
+
+    def __str__(self):
+        return self.user.email

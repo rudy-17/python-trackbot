@@ -1,10 +1,12 @@
 {% if request.user.is_authenticated %}
   {% if form.sandbox == 'active' %}
-    <div class="progress" style="height: 30px">
+    <div class="progress col-10" style="height: 30px">
       <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow='75' aria-valuemin="0" aria-valuemax="100" style="width: {{ form.daysPercent }}%"></div>
     </div>
     {{ form.daysLeft }} days left
   {% else %}
-    {{ form.sandbox }}
+    <div class="">
+      {{ form.sandbox }}
+    </div>
   {% endif %}
 {% endif %}

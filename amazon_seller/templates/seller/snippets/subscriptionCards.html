@@ -1,0 +1,33 @@
+<div class="card text-center">
+  {% if form.active %}
+    <div class="card-header">
+        <button type="button" class="close" data-target="#cancelSubscription" data-toggle="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="modal fade" id="cancelSubscription" tabindex="-1" role="dialog" aria-labelledby="cancelSubscription" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to cancel your subscription ?</h5>
+                <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+                <a href="{% url 'amazon:cancelSubscription' %}" class="btn btn-danger">Yes</a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  {% endif %}
+  <div class="card-body">
+    <h3 class="card-title">{{ title }}</h3>
+    <p class="card-text">{{ content }}</p>
+    {% for key, values in form.items %}
+      {% if key != 'active' %}
+        <hr>
+        <div class="row mt-3 justify-content-center">
+          <h4 class="card-title col-5">{{ values.amount.value }}/{{ key }}</h4>
+          {% include './subscription-decision.html' with form=values %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

@@ -78,6 +78,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'amazon_seller.middleware.MyMiddleware',
 ]
 
 ROOT_URLCONF = 'trackbot.urls'

@@ -1,4 +1,44 @@
 {% extends './base.html' %}
+{% load seller_home_tags %}
+
 {% block main %}
-  
+  <div class="container">
+    {% if request.session.subscribed or object_list %}
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Transaction Id</th>
+            <th scope="col">Plan</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+      {% for each in object_list %}
+        <tr>
+          <th scope="row">{{ each.transactionID }}</th>
+          <td>{{ each.plan }}</td>
+          <td>{{ each.duration }} days</td>
+          <td>{{ each.amount }}</td>
+          <td>{{ each.dateTime|dateToString }}</td>
+          <td>{{ each.dateTime|addDays:each.duration }}</td>
+          <td>
+            {% if each.active %}
+              <i class="fa fa-check" aria-hidden="true"></i>
+            {% else %}
+              <i class="fa fa-times" aria-hidden="true"></i>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <h2 class="text-muted text-center">Welcome to Beezytrack</h2>
+      <h3 class="text-muted text-center">Subscribe to enjoy our services</h4>
+    {% endif %}
+  </div>
 {% endblock %}
